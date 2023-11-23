@@ -1,0 +1,162 @@
+Screen1 As screen:
+
+    Label12 As label:
+        Height: =70
+        Size: =21
+        Text: ="Adauga toate datele de contact a celui caruia ii imprumuti bani!"
+        Width: =560
+        Y: =132
+        ZIndex: =1
+
+    email_d As text:
+        Default: =""
+        Height: =70
+        HintText: ="Email"
+        Size: =21
+        Width: =560
+        X: =26
+        Y: =329
+        ZIndex: =4
+
+    Group1_2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =4
+
+        Rectangle1_3 As rectangle:
+            Fill: =RGBA(54, 176, 75, 1)
+            Width: =640
+            ZIndex: =2
+
+        Label6_2 As label:
+            Align: =Align.Center
+            Color: =RGBA(255, 255, 255, 1)
+            Height: =70
+            Size: =28
+            Text: ="Caiet de datorii"
+            Width: =560
+            X: =26
+            Y: =15
+            ZIndex: =3
+
+    Label13 As label:
+        Height: =70
+        Size: =21
+        Text: ="1. Adresa de email ca sa fie anuntata persoana cui ii imprumutati bani"
+        Width: =560
+        X: =26
+        Y: =252
+        ZIndex: =5
+
+    TextInput7 As text:
+        Default: =""
+        Height: =70
+        HintText: ="2. Numele"
+        Size: =21
+        Width: =560
+        X: =26
+        Y: =408
+        ZIndex: =7
+
+    suma_d As text:
+        Default: =""
+        Height: =70
+        HintText: ="3. Suma de bani imprumutata"
+        Size: =21
+        Width: =560
+        X: =26
+        Y: =493
+        ZIndex: =8
+
+    Label15 As label:
+        Height: =70
+        Size: =21
+        Text: ="4. Data de inceput"
+        Width: =560
+        X: =26
+        Y: =576
+        ZIndex: =9
+
+    DatePicker4 As datepicker:
+        Height: =70
+        Size: =24
+        Width: =575
+        X: =26
+        Y: =646
+        ZIndex: =10
+
+    Label16 As label:
+        Height: =70
+        Size: =21
+        Text: ="5. Data de final"
+        Width: =560
+        X: =26
+        Y: =731
+        ZIndex: =11
+
+    data_f As datepicker:
+        Height: =70
+        Size: =24
+        Width: =575
+        X: =26
+        Y: =801
+        ZIndex: =12
+
+    Button7 As button:
+        Fill: =RGBA(54, 176, 75, 1)
+        Height: =70
+        OnSelect: |-
+            =Patch(
+                Datorii,
+                Defaults(Datorii),
+                {
+                    Titlu: cont,
+                    Suma: Value(suma_d.Text),
+                    Data_inceput: DatePicker4.SelectedDate,
+                    Data_final: data_f.SelectedDate,
+                    Email: email_d.Text,
+                    user: TextInput7.Text
+                }
+            );
+            Office365Outlook.SendEmailV2(
+                email_d.Text,
+                "Caiet de datorii",
+                "Buna ziua " & TextInput7.Text & ",<br /><br />Trebuie să îți achiti datoria în valoare de: " & Text(
+                    suma_d.Text,
+                    "[$-en-US]General Number"
+                ) & " până în data de: " & Text(
+                    data_f.SelectedDate,
+                    "dd.mmmm.yyyy"
+                )
+            );
+            Navigate(Home)
+        Size: =24
+        Text: ="Adauga datorie"
+        Width: =280
+        X: =166
+        Y: =894
+        ZIndex: =13
+
+    Icon1 As icon.Reset:
+        Icon: =Icon.Reset
+        OnSelect: |
+            =Reset(email_d);
+            Reset(TextInput7);
+            Reset(suma_d);
+            Reset(DatePicker4);
+            Reset(data_f);
+        X: =537
+        Y: =18
+        ZIndex: =14
+
+    Icon2 As icon.ArrowLeft:
+        Height: =79
+        Icon: =Icon.ArrowLeft
+        OnSelect: =Navigate(Home)
+        Width: =94
+        X: =11
+        Y: =18
+        ZIndex: =15
+

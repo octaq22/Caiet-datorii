@@ -1,0 +1,181 @@
+Login As screen:
+
+    email As text:
+        Default: =
+        Height: =70
+        HintText: ="Introdu email"
+        Size: =21
+        Width: =560
+        X: =36
+        Y: =210
+        ZIndex: =1
+
+    parola As text:
+        Default: =
+        Height: =70
+        HintText: ="Introdu parola"
+        Mode: =TextMode.Password
+        Size: =21
+        Width: =560
+        X: =36
+        Y: =362
+        ZIndex: =2
+
+    login_b As button:
+        Fill: =RGBA(221, 79, 14, 1)
+        Height: =70
+        OnSelect: |-
+            =If(
+                !IsBlank(
+                    LookUp(
+                        Datorii_users,
+                        Titlu = email.Text && Password = parola.Text
+                    )
+                ),
+                Navigate(Home),
+                Set(varx, true)
+            )
+        Size: =24
+        Text: ="Login"
+        Width: =280
+        X: =176
+        Y: =518
+        ZIndex: =3
+
+    Label1 As label:
+        Height: =70
+        Size: =21
+        Text: ="Ai uitat parola? O poti recupera acum"
+        Width: =560
+        X: =36
+        Y: =635
+        ZIndex: =4
+
+    recuperare_parola As button:
+        Height: =55
+        OnSelect: |-
+            =Office365Outlook.SendEmail(
+                email.Text,
+                "Recuperare parola Caiet de datorii",
+                "Parola este: " & LookUp(Datorii_users, Titlu = email.Text).Password
+            );
+            Set(VarQ, true)
+        Size: =24
+        Text: ="Recuperare parola"
+        Width: =347
+        X: =154
+        Y: =724
+        ZIndex: =5
+
+    Label2 As label:
+        Height: =70
+        Size: =21
+        Text: ="Nu ai cont? Iti poti creea unul acum"
+        Width: =560
+        X: =36
+        Y: =827
+        ZIndex: =6
+
+    creeare_cont As button:
+        Height: =70
+        OnSelect: |
+            =Navigate(Creare_cont)
+        Size: =24
+        Text: ="Creeaza cont"
+        Width: =280
+        X: =187
+        Y: =922
+        ZIndex: =7
+
+    Rectangle1 As rectangle:
+        Fill: =RGBA(221, 79, 14, 1)
+        Width: =640
+        ZIndex: =8
+
+    Label3 As label:
+        Align: =Align.Center
+        Color: =RGBA(255, 255, 255, 1)
+        Height: =70
+        Size: =26
+        Text: ="Caiet de datorii"
+        Width: =560
+        X: =36
+        Y: =15
+        ZIndex: =9
+
+    Group2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =13
+
+        Rectangle13 As rectangle:
+            Fill: =RGBA(167, 182, 203, 1)
+            Height: =295
+            Visible: =varx=true
+            Width: =425
+            X: =103
+            Y: =308
+            ZIndex: =10
+
+        Label7 As label:
+            Height: =214
+            Size: =21
+            Text: ="! Oopps Se pare ca emailul sau parola sunt gresite, incercati din nou sau apasati pe Recupeare parola"
+            Visible: =varx=true
+            Width: =394
+            X: =120
+            Y: =332
+            ZIndex: =11
+
+        Button8 As button:
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =70
+            OnSelect: =Set(varx, false)
+            Size: =24
+            Text: ="OK"
+            Visible: =varx=true
+            Width: =237
+            X: =176
+            Y: =518
+            ZIndex: =12
+
+    Group3 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =16
+
+        Rectangle14 As rectangle:
+            Fill: =RGBA(167, 182, 203, 1)
+            Height: =220
+            Visible: =VarQ = true
+            Width: =360
+            X: =141
+            Y: =560
+            ZIndex: =13
+
+        Label8 As label:
+            Height: =165
+            Size: =21
+            Text: ="Emailul cu parola a fost trimis. Verificati-va va rog mailul!"
+            Visible: =VarQ = true
+            Width: =332
+            X: =149
+            Y: =559
+            ZIndex: =14
+
+        Button9 As button:
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =60
+            OnSelect: =Set(VarQ, false)
+            Size: =24
+            Text: ="OK"
+            Visible: =VarQ = true
+            Width: =217
+            X: =211
+            Y: =704
+            ZIndex: =15
+

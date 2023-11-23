@@ -1,0 +1,49 @@
+[
+  {
+    "ApiId": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+    "CdpRevision": {
+      "BaseUrl": "/",
+      "LastChangedTimeString": "2023-06-06T16:15:13.1860000Z",
+      "RevisionNumber": 1
+    },
+    "ConnectedDataSourceInfoNameMapping": {
+      "{Attachments}": "Atașări",
+      "{Attachments}@odata.type": "{Attachments} ({Attachments}@odata.type)",
+      "{FilenameWithExtension}": "Nume de fișier cu extensie",
+      "{FullPath}": "Cale completă",
+      "{HasAttachments}": "Are atașări",
+      "{Identifier}": "Identificator",
+      "{IsFolder}": "EsteFolder",
+      "{Link}": "Link la element",
+      "{ModerationComment}": "Comentarii asociate cu aprobarea conținutului acestui element de listă",
+      "{ModerationStatus}": "Starea aprobării conținutului",
+      "{Name}": "Nume",
+      "{Path}": "Cale folder",
+      "{Thumbnail}": "Thumbnail",
+      "{TriggerWindowEndToken}": "Simbolul de sfârșit fereastră trigger",
+      "{TriggerWindowStartToken}": "Buton de pornire fereastră trigger",
+      "{VersionNumber}": "Număr versiune",
+      "Author": "Creat de",
+      "Author#Claims": "Creat de Claims",
+      "ComplianceAssetId": "ID activ de conformitate",
+      "Created": "Creat",
+      "Datafinal": "Data_final",
+      "Datainceput": "Data_inceput",
+      "Editor": "Modificat de",
+      "Editor#Claims": "Modificat de Claims",
+      "Email": "Email",
+      "ID": "ID",
+      "Modified": "Modificat",
+      "OData__ColorTag": "Etichetă de culoare",
+      "Suma": "Suma",
+      "Title": "Titlu",
+      "user": "user"
+    },
+    "DatasetName": "https://didatec.sharepoint.com/sites/Concedii",
+    "EncodeDataset": true,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "Name": "Datorii",
+    "Type": "ConnectedDataSourceInfo"
+  }
+]

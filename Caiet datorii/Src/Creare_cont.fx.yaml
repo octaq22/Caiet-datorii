@@ -1,0 +1,122 @@
+Creare_cont As screen:
+
+    Button4 As button:
+        Fill: =RGBA(221, 79, 14, 1)
+        Height: =70
+        OnSelect: |-
+            =Office365Outlook.SendEmail(
+                creare_cont_e.Text,
+                "Caiet datorii",
+                "Multumumim pentru contul facut!"
+            );
+            Set(
+                varc,
+                false
+            );
+            Set(
+                cont,
+                creare_cont_e.Text
+            );
+            If(
+                IsBlank(
+                    LookUp(
+                        Datorii_users,
+                        Titlu = creare_cont_e.Text
+                    )
+                ),
+                Patch(
+                    Datorii_users,
+                    Defaults(Datorii_users),
+                    {
+                        Titlu: creare_cont_e.Text,
+                        Password: creare_cont_p.Text
+                    }
+                ),
+                Set(
+                    varc,
+                    true
+                )
+            );
+            If(
+                varc = false,
+                Navigate(Screen4)
+            );
+            Reset(creare_cont_p);
+            Reset(creare_cont_e)
+        Size: =24
+        Text: ="Creaza cont"
+        Width: =280
+        X: =180
+        Y: =585
+        ZIndex: =2
+
+    creare_cont_e As text:
+        Default: =
+        Height: =70
+        HintText: ="Introduceti mail"
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =242
+        ZIndex: =3
+
+    creare_cont_p As text:
+        Default: =""
+        Height: =70
+        HintText: ="Introduceti parola"
+        Mode: =TextMode.Password
+        Size: =21
+        Width: =560
+        X: =40
+        Y: =392
+        ZIndex: =4
+
+    Button4_1 As button:
+        Fill: =RGBA(221, 79, 14, 1)
+        Height: =70
+        OnSelect: =Navigate(Login)
+        Size: =24
+        Text: ="Inapoi"
+        Width: =280
+        X: =180
+        Y: =695
+        ZIndex: =8
+
+    Group4 As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =8
+
+        Rectangle2 As rectangle:
+            Fill: =RGBA(204, 208, 225, 1)
+            Height: =274
+            Visible: =varc= true
+            Width: =437
+            X: =88
+            Y: =324
+            ZIndex: =5
+
+        Label9 As label:
+            Height: =142
+            Size: =21
+            Text: ="Acest email a fost deja folosti. Te rog sa folosesti alt mail sau sa folosesti meniul de Recupereaza parola"
+            Visible: =varc= true
+            Width: =395
+            X: =109
+            Y: =342
+            ZIndex: =6
+
+        Button10 As button:
+            Fill: =RGBA(255, 0, 0, 1)
+            Height: =65
+            OnSelect: =Set(varc,false)
+            Size: =24
+            Text: ="OK"
+            Visible: =varc= true
+            Width: =140
+            X: =236
+            Y: =502
+            ZIndex: =7
+

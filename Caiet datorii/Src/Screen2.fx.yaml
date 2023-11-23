@@ -1,0 +1,27 @@
+Screen2 As screen:
+
+    AddMediaWithImage2 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =1
+
+        UploadedImage2 As image:
+            Height: =AddMediaButton2.Height
+            Image: =If(IsBlank(AddMediaButton2.Media), SampleImage, AddMediaButton2.Media)
+            ImagePosition: =ImagePosition.Fill
+            Width: =AddMediaButton2.Width
+            X: =AddMediaButton2.X
+            Y: =AddMediaButton2.Y
+            ZIndex: =2
+
+        AddMediaButton2 As addMedia:
+            ChangePictureText: =""
+            Height: =432
+            Size: =25
+            Width: =575
+            X: =40
+            Y: =40
+            ZIndex: =3
+

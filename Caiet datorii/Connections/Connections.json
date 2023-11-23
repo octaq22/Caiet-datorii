@@ -1,0 +1,56 @@
+{
+  "5a2ee555-214b-4e39-bb95-1c1e5708a33d": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://didatec.sharepoint.com/sites/Concedii": {
+        "dataSources": {
+          "Datorii": {
+            "tableName": "2eb7ecc1-ce14-4e69-89e7-1cb2f20814cf"
+          },
+          "Datorii_users": {
+            "tableName": "f91ccd65-ced9-4b51-b1a5-3bf87292e020"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "Datorii_users",
+      "Datorii"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "5a2ee555-214b-4e39-bb95-1c1e5708a33d"
+  },
+  "be6ddcf8-9e8e-4282-a807-abd01833a4ff": {
+    "appActions": [
+      "SendEmail",
+      "SendEmailV2"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "Office 365 Outlook",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/office365/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_office365",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {},
+    "dataSources": [
+      "Office365Outlook"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "be6ddcf8-9e8e-4282-a807-abd01833a4ff"
+  }
+}
